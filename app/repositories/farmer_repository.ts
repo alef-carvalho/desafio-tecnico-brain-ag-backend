@@ -28,6 +28,7 @@ export default class FarmerRepository {
   }
 
   async delete(id: number) {
-    await Farmer.query().where({ id }).delete()
+    const farmer = await Farmer.query().where({ id }).firstOrFail()
+    await farmer.delete()
   }
 }

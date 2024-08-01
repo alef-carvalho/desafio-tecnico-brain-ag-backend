@@ -7,7 +7,7 @@ export default class Farmer extends BaseModel {
   static namingStrategy = new SnakeCaseNamingStrategy()
 
   @column({ isPrimary: true })
-  declare id: string
+  declare id: number
 
   @column()
   declare name: string
