@@ -1,7 +1,7 @@
 import { inject } from '@adonisjs/core'
 import FarmRepository from '#repositories/farm_repository'
-import { UpdateFarmDto } from '#contracts/farm/update_farm_dto'
-import { CreateFarmDTO } from '#contracts/farm/create_farm_dto'
+import { UpdateFarmDto } from '#interfaces/farm/update_farm_dto'
+import { CreateFarmDTO } from '#interfaces/farm/create_farm_dto'
 
 @inject()
 export default class FarmService {

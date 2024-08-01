@@ -3,8 +3,8 @@ import { cpf, cnpj } from 'cpf-cnpj-validator'
 import FarmerRepository from '#repositories/farmer_repository'
 import ConflictException from '#exceptions/conflict_exception'
 import ValidationException from '#exceptions/validation_exception'
-import { CreateFarmerDTO } from '#contracts/farmer/create_farmer_dto'
-import { UpdateFarmerDto } from '#contracts/farmer/update_farmer_dto'
+import { CreateFarmerDTO } from '#interfaces/farmer/create_farmer_dto'
+import { UpdateFarmerDto } from '#interfaces/farmer/update_farmer_dto'
 
 @inject()
 export default class FarmerService {
