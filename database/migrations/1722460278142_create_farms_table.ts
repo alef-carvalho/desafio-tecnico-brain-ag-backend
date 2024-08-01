@@ -7,6 +7,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.integer('farmer_id')
+      table.string('name', 50)
       table.decimal('total_area', 8, 2)
       table.decimal('total_agriculture_area', 8, 2)
       table.decimal('total_vegetation_area', 8, 2)

@@ -1,7 +1,9 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, SnakeCaseNamingStrategy } from '@adonisjs/lucid/orm'
 
 export default class Culture extends BaseModel {
+  static namingStrategy = new SnakeCaseNamingStrategy()
+
   @column({ isPrimary: true })
   declare id: number
 
