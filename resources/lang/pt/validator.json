@@ -1,0 +1,21 @@
+{
+  "shared": {
+    "fields": {
+      "name": "nome",
+      "city": "cidade",
+      "state": "estado",
+      "cpf_cnpj": "CPF/CNPJ",
+      "farms": "fazenda(s)",
+      "farms.name": "fazenda(s)",
+      "farms.total_area": "total da área",
+      "farms.total_agriculture_area": "total de área agrícultável",
+      "farms.total_vegetation_area": "total de área de vegetação"
+    },
+    "messages": {
+      "alpha": "o campo \"{field}\" deve conter somente letras",
+      "maxLength": "o campo \"{field}\" deve conter no máximo {max} caracteres",
+      "minLength": "o campo \"{field}\" deve conter no mínimo {max} caracteres",
+      "required": "o campo \"{field}\" é obrigatório"
+    }
+  }
+}
