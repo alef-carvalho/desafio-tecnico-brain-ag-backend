@@ -1,6 +1,6 @@
 import { inject } from '@adonisjs/core'
 import FarmRepository from '#repositories/farm_repository'
-import { UpdateFarmDto } from '#interfaces/farm/update_farm_dto'
+import { UpdateFarmDTO } from '#interfaces/farm/update_farm_dto'
 import { CreateFarmDTO } from '#interfaces/farm/create_farm_dto'
 
 @inject()
@@ -19,7 +19,7 @@ export default class FarmService {
     return this.farmRepository.store(createFarmerDto, cultures)
   }
 
-  async update(farmId: number, { cultures, ...updateFarmDto }: UpdateFarmDto) {
+  async update(farmId: number, { cultures, ...updateFarmDto }: UpdateFarmDTO) {
     return this.farmRepository.update(farmId, updateFarmDto, cultures)
   }
 
