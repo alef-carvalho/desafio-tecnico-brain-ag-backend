@@ -1,0 +1,24 @@
+version: '2'
+services:
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: brain_ag_api
+    env_file:
+      - .env
+    ports:
+      - "3000:3333"
+    depends_on:
+      - database
+
+  database:
+    image: bitnami/postgresql
+    container_name: brain_ag_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: brain_ag
+    volumes:
+      - ./.docker/volumes/postgres:/bitnami/postgresql
+    restart: always

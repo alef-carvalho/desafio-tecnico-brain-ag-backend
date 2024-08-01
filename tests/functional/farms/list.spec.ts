@@ -34,7 +34,7 @@ test.group('farms > list', () => {
       state: 'RO',
     })
 
-    const farm = await farmer.related('farms').create({
+    await farmer.related('farms').create({
       name: 'Fazenda Teste',
       total_area: 1000,
       total_agriculture_area: 500,
