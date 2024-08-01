@@ -5,5 +5,5 @@ const FarmerController = () => import('#controllers/farmers_controller')
 
 router.get('/', async () => ({ hello: 'world' }))
 router.resource('cultures', CultureController).as('cultures').only(['index'])
-router.resource('farms', FarmController).as('farms').except(['create', 'edit'])
 router.resource('farmers', FarmerController).as('farmers').except(['create', 'edit'])
+router.resource('farmers/:farmerId/farms', FarmController).as('farms').except(['create', 'edit'])

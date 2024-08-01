@@ -23,14 +23,16 @@
     "#events/*": "./app/events/*.js",
     "#middleware/*": "./app/middleware/*.js",
     "#validators/*": "./app/validators/*.js",
+    "#constants/*": "./app/constants/*.js",
+    "#repositories/*": "./app/repositories/*.js",
+    "#contracts/*": "./app/contracts/*.js",
     "#providers/*": "./providers/*.js",
     "#policies/*": "./app/policies/*.js",
     "#abilities/*": "./app/abilities/*.js",
     "#database/*": "./database/*.js",
     "#start/*": "./start/*.js",
     "#tests/*": "./tests/*.js",
-    "#config/*": "./config/*.js",
-    "#repositories/*": "./app/repositories/*.js"
+    "#config/*": "./config/*.js"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^7.7.0",
@@ -58,6 +60,7 @@
     "@adonisjs/i18n": "^2.1.0",
     "@adonisjs/lucid": "^21.1.0",
     "@vinejs/vine": "^2.1.0",
+    "cpf-cnpj-validator": "^1.0.3",
     "luxon": "^3.4.4",
     "pg": "^8.12.0",
     "reflect-metadata": "^0.2.2"

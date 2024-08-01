@@ -1,5 +1,5 @@
-import CultureRepository from '#repositories/culture_repository'
 import { inject } from '@adonisjs/core'
+import CultureRepository from '#repositories/culture_repository'
 
 @inject()
 export default class CultureService {

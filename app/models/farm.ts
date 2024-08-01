@@ -1,15 +1,26 @@
 import { DateTime } from 'luxon'
 import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
-import { BaseModel, belongsTo, column, manyToMany } from '@adonisjs/lucid/orm'
+import {
+  BaseModel,
+  belongsTo,
+  column,
+  manyToMany,
+  SnakeCaseNamingStrategy,
+} from '@adonisjs/lucid/orm'
 import Culture from '#models/culture'
 import Farmer from '#models/farmer'
 
 export default class Farm extends BaseModel {
+  static namingStrategy = new SnakeCaseNamingStrategy()
+
   @column({ isPrimary: true })
   declare id: number
 
   @column()
   declare farmer_id: number
+
+  @column()
+  declare name: string
 
   @column()
   declare total_area: number

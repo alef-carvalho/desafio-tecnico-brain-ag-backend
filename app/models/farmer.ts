@@ -1,9 +1,11 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany, SnakeCaseNamingStrategy } from '@adonisjs/lucid/orm'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
 import Farm from '#models/farm'
 
 export default class Farmer extends BaseModel {
+  static namingStrategy = new SnakeCaseNamingStrategy()
+
   @column({ isPrimary: true })
   declare id: string
 

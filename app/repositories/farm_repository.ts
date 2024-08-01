@@ -1,24 +1,31 @@
-import Farmer from '#models/farmer'
+import Farm from '#models/farm'
 
 export default class FarmRepository {
-  async findAll() {
-    return Farmer.query().select(['id', 'name']).orderBy('name', 'asc')
+  async findAll(farmer_id: number) {
+    return Farm.query()
+      .where({ farmer_id })
+      .preload('cultures', (builder) => builder.select(['id', 'name']))
+      .select(['id', 'name', 'total_area', 'total_agriculture_area', 'total_vegetation_area'])
+      .orderBy('name', 'asc')
   }
 
   async findOne(id: number) {
-    return Farmer.findByOrFail({ id })
+    return Farm.query().preload('cultures').where({ id }).firstOrFail()
   }
 
-  async store(payload: any): Promise<Farmer> {
-    return await Farmer.create({
-      name: payload.name,
-      city: payload.city,
-      state: payload.state,
-      cpf_cnpj: payload.cpf_cnpj,
-    })
+  async store(payload: Partial<Farm>, cultures: number[]): Promise<Farm> {
+    const farm = await Farm.create(payload)
+    await farm.related('cultures').attach(cultures)
+    return farm
+  }
+
+  async update(id: number, data: Partial<Farm>, cultures: number[]) {
+    const farm = await Farm.findOrFail(id)
+    await farm.merge(data).save()
+    await farm.related('cultures').sync(cultures)
   }
 
   async delete(id: number) {
-    await Farmer.query().where({ id }).delete()
+    await Farm.query().where({ id }).delete()
   }
 }

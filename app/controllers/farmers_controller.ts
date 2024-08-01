@@ -1,12 +1,12 @@
 import { inject } from '@adonisjs/core'
 import type { HttpContext } from '@adonisjs/core/http'
 import FarmerService from '#services/farmer_service'
-import { createFarmerValidator } from '#validators/farmer_validator'
+import { storeFarmerValidator, updateFarmValidator } from '#validators/farmer_validator'
 
 @inject()
 export default class FarmerController {
   constructor(private readonly farmerService: FarmerService) {}
-  async index({}: HttpContext) {
+  async index() {
     return this.farmerService.findAll()
   }
 
@@ -15,11 +15,14 @@ export default class FarmerController {
   }
 
   async store({ request }: HttpContext) {
-    const createFarmerDto = await request.validateUsing(createFarmerValidator)
+    const createFarmerDto = await request.validateUsing(storeFarmerValidator)
     return this.farmerService.store(createFarmerDto)
   }
 
-  async update({ params, request }: HttpContext) {}
+  async update({ request, params }: HttpContext) {
+    const updateFarmDto = await request.validateUsing(updateFarmValidator)
+    return this.farmerService.update(params.id, updateFarmDto)
+  }
 
   async destroy({ params }: HttpContext) {
     return this.farmerService.destroy(params.id)
