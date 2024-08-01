@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
+import type { HasMany } from '@adonisjs/lucid/types/relations'
+import Farm from '#models/farm'
 
 export default class Farmer extends BaseModel {
   @column({ isPrimary: true })
@@ -16,6 +18,9 @@ export default class Farmer extends BaseModel {
 
   @column()
   declare state: string
+
+  @hasMany(() => Farm, { foreignKey: 'farmer_id' })
+  declare farms: HasMany<typeof Farm>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
