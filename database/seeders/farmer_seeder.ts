@@ -11,7 +11,7 @@ export default class extends BaseSeeder {
         state: 'RO',
       }
     )
-    farmer.related('farms').firstOrCreate(
+    const farm = await farmer.related('farms').firstOrCreate(
       {
         name: 'Fazenda Sucuri',
       },
@@ -21,5 +21,7 @@ export default class extends BaseSeeder {
         total_agriculture_area: 500,
       }
     )
+
+    farm.related('cultures').attach([1, 2, 3])
   }
 }
