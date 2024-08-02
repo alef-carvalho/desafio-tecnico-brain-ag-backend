@@ -23,12 +23,12 @@ docker-compose up -d
 ## Configuração
 Execute as migrações:
 ```shell
-node ace migrate:run
+docker exec -it brain_ag_api node ace migration:run
 ```
 
 Execute os seeders
 ```shell
-node ace db:seed
+docker exec -it brain_ag_api node ace db:seed
 ```
 
 A aplicação estará disponível no endereço: http://127.0.0.1:3000
